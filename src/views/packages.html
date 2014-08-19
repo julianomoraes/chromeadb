@@ -19,6 +19,7 @@
                 <th>CLEAR DATA</th>
                 <th>UNINSTALL</th>
                 <th>FORCE-STOP</th>
+                <th>RUN</th>
             </tr>
             </thead>
             <tbody>
@@ -44,7 +45,14 @@
                     <button class="btn btn-info"
                             ng-click="setPackageCommandInfo(2, devInfo.serial, package);"
                             data-toggle="modal" data-target="#alertModal">
-                        <span class="glyphicon glyphicon-ban-circle"></span>
+                        <span class="glyphicon glyphicon-stop"></span>
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-info"
+                            ng-click="setPackageCommandInfo(3, devInfo.serial, package);"
+                            data-toggle="modal" data-target="#alertModal">
+                        <span class="glyphicon glyphicon-play"></span>
                     </button>
                 </td>
             </tr>

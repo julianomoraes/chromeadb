@@ -412,7 +412,23 @@ adb.controller('controller', ['$scope', '$q', 'socketService', '$sce', function 
     var cmd2 = 'shell:am force-stop ' + packageName;
 
     $scope.logMessage = {
-      cmd: 'Force-stop',
+      cmd: 'Force-stop',      
+      res: null
+    };
+
+    console.log(serial, packageName);
+    $scope.getReadAllPromise(cmd1, cmd2)
+      .then(function (param) {
+        console.log(serial, packageName);
+      });
+  };
+
+  $scope.startPackage = function (serial, packageName) {
+    var cmd1 = 'host:transport:' + serial;
+    var cmd2 = 'shell:am start ' + packageName;
+
+    $scope.logMessage = {
+      cmd: 'Start',
       res: null
     };
 
@@ -558,6 +574,10 @@ adb.controller('controller', ['$scope', '$q', 'socketService', '$sce', function 
       case 2:
         func = $scope.stopPackage;
         msg = 'FORCE-STOP';
+        break;
+      case 3:
+        func = $scope.startPackage;
+        msg = 'START';
         break;
     }
 
